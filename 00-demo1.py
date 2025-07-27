@@ -8,7 +8,7 @@ def _set_if_undefined(var: str):
 
 
 _set_if_undefined("OPENAI_API_KEY")
-_set_if_undefined("TAVILY_API_KEY")
+_set_if_undefined("TAVILY_API")
 
 
 
