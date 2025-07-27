@@ -15,3 +15,4 @@ _set_if_undefined("TAVILY_API_KEY")
 os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
 os.environ["TAVILY_API_KEY"] = os.environ.get("TAVILY_API_KEY")
 
+# update test
