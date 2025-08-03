@@ -1,10 +1,22 @@
+import os
+from typing import Literal
+
+from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_react_agent
-# import time
-llm = ChatOpenAI(model="gpt-4o")
+from langgraph.types import Command
+
+from graph.Search import tavily_tool, scrape_webpages
+load_dotenv()
+print(os.getenv("DEEPSEEK_API_KEY"))
+
+llm = ChatOpenAI(model="deepseek-chat",api_key=os.getenv("DEEPSEEK_API_KEY"), temperature=0)
 
 search_agent = create_react_agent(llm, tools=[tavily_tool])
+
+print(search_agent.invoke({"messages": [HumanMessage(content="What is the population of the world?")]}))
+exit()
 
 
 def search_node(state: State) -> Command[Literal["supervisor"]]:

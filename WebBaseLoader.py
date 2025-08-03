@@ -1,3 +1,22 @@
+import getpass
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+#
+# def _set_if_undefined(var: str):
+#     if not os.environ.get(var):
+#         os.environ[var] = getpass.getpass(f"Please provide your {var}")
+
+# def _set_if_undefined(var: str):
+#     if not os.getenv(var):
+#         os.environ[var] = getpass.getpass(f"Please provide your {var}")
+# # _set_if_undefined("OPENAI_API_KEY")
+# _set_if_undefined("TAVILY_API_KEY")
+
+
+
 from typing import Annotated, List
 
 from langchain_community.document_loaders import WebBaseLoader
@@ -19,4 +38,5 @@ def scrape_webpages(urls: List[str]) -> str:
         ]
     )
 
-print(scrape_webpages(["https://www.google.com", "https://www.bing.com"]))
+a = scrape_webpages("https://en.wikipedia.org/wiki/Main_Page")
+print(a)
