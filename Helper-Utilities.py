@@ -1,4 +1,4 @@
-from typing import List, Optional, Literal
+from typing import List, Optional, Literal, TypedDict
 from langchain_core.language_models.chat_models import BaseChatModel
 
 from langgraph.graph import StateGraph, MessagesState, START, END
@@ -38,3 +38,4 @@ def make_supervisor_node(llm: BaseChatModel, members: list[str]) -> str:
         return Command(goto=goto, update={"next": goto})
 
     return supervisor_node
+

@@ -4,7 +4,6 @@
 # 示例：将Hugging Face模型API封装成统一预测接口
 
 
-
 from abc import ABC, abstractmethod
 
 
