@@ -25,8 +25,8 @@ async def main():
 
     # 4. 任务对象创建和管理
     print(f"[{time.strftime('%X')}] 创建独立任务")
-    task1 = asyncio.create_task(say_after(2, "独立任务1完成"))
-    task2 = asyncio.create_task(say_after(6, "独立任务2完成"))
+    task1 = asyncio.create_task(say_after(5, "独立任务1完成"))
+    task2 = asyncio.create_task(say_after(2, "独立任务2完成"))
 
     # 5. 等待特定任务完成
     await task1

@@ -15,7 +15,7 @@ load_dotenv()
 # # _set_if_undefined("OPENAI_API_KEY")
 # _set_if_undefined("TAVILY_API_KEY")
 
-
+os.environ["TAVILY_API_KEY"] = os.getenv("TAVILY_API_KEY")
 
 from typing import Annotated, List
 
@@ -37,6 +37,3 @@ def scrape_webpages(urls: List[str]) -> str:
             for doc in docs
         ]
     )
-
-a = scrape_webpages("https://en.wikipedia.org/wiki/Main_Page")
-print(a)
