@@ -1,13 +1,16 @@
-from json import tool
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import Dict, Optional, Annotated, List
+from typing import Dict, Optional, List
 
+from langchain_core.tools import tool
 from langchain_experimental.utilities import PythonREPL
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, Annotated
 
 _TEMP_DIRECTORY = TemporaryDirectory()
 WORKING_DIRECTORY = Path(_TEMP_DIRECTORY.name)
+
+print(_TEMP_DIRECTORY)
+print(WORKING_DIRECTORY)
 
 
 @tool
@@ -90,5 +93,3 @@ def python_repl_tool(
     except BaseException as e:
         return f"Failed to execute. Error: {repr(e)}"
     return f"Successfully executed:\n\`\`\`python\n{code}\n\`\`\`\nStdout: {result}"
-
-
