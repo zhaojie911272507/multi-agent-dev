@@ -16,6 +16,7 @@ embeddings = DashScopeEmbeddings(
 )
 
 from preprocess_documents import doc_splits
+
 vectorstore = InMemoryVectorStore.from_documents(
     documents=doc_splits, embedding=embeddings
 )
