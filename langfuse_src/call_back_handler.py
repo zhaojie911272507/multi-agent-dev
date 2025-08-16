@@ -1,5 +1,5 @@
 import os
-import __init__
+
 from langfuse.langchain import CallbackHandler
 from langchain_core.prompts import ChatPromptTemplate
 

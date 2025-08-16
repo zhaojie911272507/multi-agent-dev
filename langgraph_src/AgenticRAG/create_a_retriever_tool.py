@@ -34,6 +34,6 @@ retriever_tool = create_retriever_tool(
     "Search and return information about Lilian Weng blog posts.",
 )
 
-result = retriever_tool.invoke({"query": "types of reward hacking"})
-print(result)
+# result = retriever_tool.invoke({"query": "types of reward hacking"})
+# print(result)
 
