@@ -201,3 +201,8 @@ cython_debug/
 .idea/*
 *.png
 *.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+crewai_langgraph_src/*
