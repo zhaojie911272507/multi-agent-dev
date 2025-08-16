@@ -1,7 +1,11 @@
 from typing import List, Optional, Literal, TypedDict
+<<<<<<<< HEAD:Helper-Utilities.py
+from langchain_core.language_models.chat_models import BaseChatModel
+========
 
 from langchain_core.language_models import BaseChatModel
 # from langchain_core.language_models.chat_models import BaseChatModel
+>>>>>>>> origin/bugfix/backup:langgraph_src/HierarchicalAgentTeams/helper_utilities.py
 
 from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.types import Command
@@ -42,6 +46,9 @@ def make_supervisor_node(llm: BaseChatModel, members: list[str]) -> str:
 
     return supervisor_node
 
+<<<<<<<< HEAD:Helper-Utilities.py
+========
 
 
 
+>>>>>>>> origin/bugfix/backup:langgraph_src/HierarchicalAgentTeams/helper_utilities.py
