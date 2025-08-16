@@ -2,7 +2,7 @@ from typing import Literal
 
 from langchain_core.tools import tool
 
-from langgraph_src.customWokflow.init_chat_model import llm
+from langgraph_src.custom_wokflow.init_chat_model import llm
 
 
 # Define tools

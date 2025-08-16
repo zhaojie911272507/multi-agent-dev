@@ -4,7 +4,7 @@ from typing import TypedDict, Literal
 from langgraph.graph import StateGraph, START, END
 from pydantic import BaseModel, Field
 
-from langgraphsrc.customWokflow.init_chat_model import llm
+from langgraph_src.custom_wokflow.init_chat_model import llm
 
 
 class State(TypedDict):
