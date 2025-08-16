@@ -199,6 +199,5 @@ cython_debug/
 
 .DS_Store
 .idea/*
-.png
-.log
+*.png
 *.db
