@@ -12,7 +12,7 @@ tool.invoke("What's a 'node' in LangGraph?")
 
 
 # 4. Define the graph
-from langgraph_src.customWokflow.init_chat_model import llm
+from langgraph_src.custom_wokflow.init_chat_model import llm
 
 from typing import Annotated
 

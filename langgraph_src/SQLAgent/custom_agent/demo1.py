@@ -4,9 +4,9 @@ from langchain_core.messages import AIMessage
 from langgraph.graph import MessagesState, END, StateGraph, START
 from langgraph.prebuilt import ToolNode
 
-from langgraphsrc.SQLAgent.SQLDatabase import db
-from langgraphsrc.SQLAgent.initChatModel import llm
-from langgraphsrc.SQLAgent.Toolkit import tools
+from langgraph_src.SQLAgent.sql_database import db
+from langgraph_src.SQLAgent.init_chat_model import llm
+from langgraph_src.SQLAgent.tool_kit import tools
 
 get_schema_tool = next(tool for tool in tools if tool.name == "sql_db_schema")
 print(get_schema_tool)

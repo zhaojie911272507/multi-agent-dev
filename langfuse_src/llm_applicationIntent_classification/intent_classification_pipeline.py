@@ -5,7 +5,7 @@
 # 此方法需要标记数据，但可以确保对预定义意图的一致预测，适用于明确定义的意图识别。
 
 
-import  langfusesrc.LLMApplicationIntentClassification.__init__
+import  langfuse_src.llm_applicationIntent_classification.__init__
 
 from langfuse import Langfuse
 

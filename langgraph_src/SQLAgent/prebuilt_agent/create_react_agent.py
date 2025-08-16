@@ -1,7 +1,7 @@
 from langgraph.prebuilt import create_react_agent
-from langgraphsrc.SQLAgent.Toolkit import tools
-from langgraphsrc.SQLAgent.initChatModel import llm
-from langgraphsrc.SQLAgent.SQLDatabase import db
+from langgraph_src.SQLAgent.tool_kit import tools
+from langgraph_src.SQLAgent.init_chat_model import llm
+from langgraph_src.SQLAgent.sql_database import db
 
 system_prompt = """
 You are an agent designed to interact with a SQL database.

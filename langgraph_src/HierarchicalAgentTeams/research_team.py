@@ -7,9 +7,8 @@ from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, START
 from langgraph.prebuilt import create_react_agent
 from langgraph.types import Command
-from sqlalchemy.testing.config import test_schema_2
 
-from web_base_loader import tavily_tool, scrape_webpages
+from create_tools_for_research_team import tavily_tool, scrape_webpages
 import sys
 from pathlib import Path
 from langgraph_src.HierarchicalAgentTeams.helper_utilities import State, make_supervisor_node
@@ -69,13 +68,13 @@ research_builder.add_edge(START, "supervisor")
 research_graph = research_builder.compile()
 
 
-
-for chunk in research_graph.stream(
-    {"messages": [("user", "when is Taylor Swift's next tour?？请用中文回答")]},
-    {"recursion_limit": 100},
-):
-    print(chunk)
-    print("---")
+if __name__ == "__main__":
+    for chunk in research_graph.stream(
+        {"messages": [("user", "when is Taylor Swift's next tour?？请用中文回答")]},
+        {"recursion_limit": 100},
+    ):
+        print(chunk)
+        print("---")
 
 # from IPython.display import Image, display
 #

@@ -7,8 +7,8 @@ from langgraph.graph import MessagesState, StateGraph
 from langgraph.prebuilt import InjectedState, create_react_agent
 from langgraph.types import Send, Command
 
-from langgraph_src.AgentSupervisor.createWorkerAgent.mathAgent import math_agent
-from langgraph_src.AgentSupervisor.createWorkerAgent.agentSupervisorD import research_agent,pretty_print_messages
+from langgraph_src.agent_supervisor.createWorkerAgent.mathAgent import math_agent
+from langgraph_src.agent_supervisor.createWorkerAgent.agentSupervisorD import research_agent,pretty_print_messages
 
 def create_task_description_handoff_tool(
     *, agent_name: str, description: str | None = None

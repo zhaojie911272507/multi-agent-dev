@@ -2,7 +2,7 @@ from typing import TypedDict, Annotated
 
 from langgraph.graph import StateGraph, add_messages,START, END
 
-from langgraph_src.customWokflow.init_chat_model import llm
+from langgraph_src.custom_wokflow.init_chat_model import llm
 
 
 class State(TypedDict):
