@@ -205,4 +205,9 @@ cython_debug/
 # Jupyter
 .ipynb_checkpoints/
 
-crewai_langgraph_src/*
+crewai_langgraph_src/
+
+# embedding model file
+all-mpnet-base-v2/
+
+*.csv
