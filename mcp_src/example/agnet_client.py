@@ -1,4 +1,5 @@
 import os
+from pprint import pprint
 
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.prebuilt import create_react_agent
@@ -35,12 +36,12 @@ async def main():
     math_response = await agent.ainvoke(
         {"messages": [{"role": "user", "content": "what's (3 + 5) x 12?"}]}
     )
-    print(math_response)
+    pprint(math_response)
 
-    weather_response = await agent.ainvoke(
-        {"messages": [{"role": "user", "content": "what is the weather in nyc?"}]}
-    )
-    print(weather_response)
+    # weather_response = await agent.ainvoke(
+    #     {"messages": [{"role": "user", "content": "what is the weather in shanghai?"}]}
+    # )
+    # print(weather_response)
 
 if __name__ == "__main__":
     asyncio.run(main())
