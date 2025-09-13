@@ -34,7 +34,7 @@ async def main():
         tools
     )
     math_response = await agent.ainvoke(
-        {"messages": [{"role": "user", "content": "what's (3 + 5) x 12?"}]}
+        {"messages": [{"role": "user", "content": "计算 (30 + 5) x 12"}]}
     )
     pprint(math_response)
 
