@@ -211,3 +211,5 @@ crewai_langgraph_src/
 all-mpnet-base-v2/
 
 *.csv
+
+model_files/
