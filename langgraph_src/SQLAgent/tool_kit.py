@@ -6,6 +6,9 @@ from langgraph_src.SQLAgent.sql_database import db
 toolkit = SQLDatabaseToolkit(db=db,llm=llm)
 
 tools = toolkit.get_tools()
+
+run_query_tool = next(tool for tool in tools if tool.name == "sql_db_query")
+
 if __name__ == '__main__':
 
     for tool in tools:
