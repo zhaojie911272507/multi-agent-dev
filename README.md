@@ -15,8 +15,8 @@
 
 ```bash
 # 克隆仓库
-git clone <repository-url>
-cd langgraphtest0725
+git clone https://github.com/zhaojie911272507/multi-agent-dev.git
+cd multi-agent-dev
 
 # 创建虚拟环境（推荐）
 python -m venv .venv
@@ -65,6 +65,7 @@ python mcp_src/example/agent_client.py
 
 - **多服务接入** - 支持 stdio、streamable_http 等传输方式
 - **自定义工具服务器** - 数学计算、天气查询等示例
+- **Database MCP Server** - 生产级私有数据库 MCP（PostgreSQL/MySQL），支持 Schema 自省、参数化查询、连接池、注入防御
 - **LangGraph 集成** - MCP 工具与 `create_react_agent` / `StateGraph` 无缝结合
 - **统一接口** - 标准化模型调用，支持批量与异步
 
@@ -95,7 +96,7 @@ python mcp_src/example/agent_client.py
 |------|------|
 | `langgraph_src/` | LangGraph 核心示例（图 API、预构建 Agent、SQL Agent、监督者模式等） |
 | `crewai_src/` | CrewAI 多智能体示例 |
-| `mcp_src/` | MCP 协议示例与自定义服务器 |
+| `mcp_src/` | MCP 协议示例与自定义服务器（含 Database MCP Server） |
 | `langfuse_src/` | Langfuse 可观测性集成 |
 | `evomap_src/` | EvoMap 知识演化图谱系统 |
 | `persistence/` | 持久化与内存存储 |
