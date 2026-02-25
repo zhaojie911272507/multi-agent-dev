@@ -44,8 +44,11 @@ dashscope>=1.20.0
 
 # Database
 sqlalchemy>=2.0.0
-# MySQL 驱动（SQLAgent 使用 mysql:// 时需安装）
+# PostgreSQL 驱动（Database MCP Server）
+psycopg2-binary>=2.9.0
+# MySQL 驱动（SQLAgent / Database MCP）
 mysqlclient>=2.0.0
+pymysql>=1.1.0
 
 # Utilities
 python-dotenv>=1.0.0
