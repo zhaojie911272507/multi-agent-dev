@@ -13,7 +13,6 @@ import os
 from crewai import LLM
 from crewai.project import agent
 from dotenv import load_dotenv
-from sympy import print_glsl
 
 load_dotenv()
 # 定义 DeepSeek 模型实例

@@ -4,7 +4,7 @@
 import os
 from dotenv import load_dotenv
 from langgraph.prebuilt import create_react_agent
-from getweather import get_weather
+from langgraph_src.prebuilt_agent.getweather import get_weather
 
 load_dotenv()
 os.environ["DEEPSEEK_API_KEY"] = os.getenv("DEEPSEEK_API_KEY")

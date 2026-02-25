@@ -1,15 +1,18 @@
-# LangGraph & LangChain
-langgraph>=0.2.0
-langchain>=0.3.0
-langchain-openai>=0.2.0
+# LangGraph & LangChain (v1.x)
+langgraph>=1.0.0
+langchain>=1.0.0
+langchain-openai>=1.0.0
 langchain-community>=0.3.0
-langchain-core>=0.3.0
+langchain-core>=1.0.0
+# 兼容 langchain-core 1.x（旧版 0.x 会与 v1 冲突）
+langchain-anthropic>=1.0.0
+langchain-deepseek>=1.0.0
 langchain-experimental>=0.3.0
 langchain-text-splitters>=0.3.0
 langchain-tavily>=0.2.0
-langchain-mcp-adapters>=0.1.0
+langchain-mcp-adapters>=0.2.0
 langgraph-swarm>=0.1.0
-langgraph-supervisor>=0.1.0
+langgraph-supervisor>=0.0.20
 
 # CrewAI
 crewai[tools]>=0.157.0,<1.0.0
@@ -41,6 +44,8 @@ dashscope>=1.20.0
 
 # Database
 sqlalchemy>=2.0.0
+# MySQL 驱动（SQLAgent 使用 mysql:// 时需安装）
+mysqlclient>=2.0.0
 
 # Utilities
 python-dotenv>=1.0.0
