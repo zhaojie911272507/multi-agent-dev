@@ -56,3 +56,4 @@ pip install -r requirements.txt
 
 - **按需精简**：若仅运行部分模块，可按上表删除未使用的依赖
 - **版本约束**：`crewai` 限定 `<1.0.0` 以保持与当前代码兼容
+- **LangGraph/LangChain v1**：项目已升级至 LangGraph 1.x 和 LangChain 1.x；`create_react_agent` 已弃用，推荐使用 `langchain.agents.create_agent`（参数 `prompt` 改为 `system_prompt`）

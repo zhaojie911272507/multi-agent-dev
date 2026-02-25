@@ -4,12 +4,8 @@ from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
 from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_react_agent
-from openai import api_key
 
-
-def get_weather(city: str) -> str:
-    """Get weather for a given city."""
-    return f"It's always sunny in {city}!"
+from langgraph_src.prebuilt_agent.getweather import get_weather
 
 load_dotenv()
 os.environ["DEEPSEEK_API_KEY"] = os.getenv("DEEPSEEK_API_KEY")
