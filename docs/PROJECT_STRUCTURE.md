@@ -25,6 +25,18 @@ langgraphtest0725/
 ├── knowledge/               # 设计模式、异步等知识库
 ├── streamlit_src/           # Streamlit 演示（原 streamlit-src）
 ├── llama_index/             # LlamaIndex 示例（原 LlamaIndex）
+├── evomap_src/              # EvoMap 知识演化图谱系统
+│   ├── nodes/               # 工作流节点
+│   │   ├── knowledge_collector.py   # 知识采集
+│   │   ├── knowledge_analyzer.py    # 知识分析（实体/关系提取）
+│   │   ├── graph_builder.py         # 演化图谱构建
+│   │   ├── trend_predictor.py       # 趋势预测
+│   │   └── report_generator.py      # 报告生成
+│   ├── config.py            # 配置（模型、阈值）
+│   ├── models.py            # 数据模型（State、实体、关系）
+│   ├── utils.py             # 工具函数
+│   ├── main.py              # 工作流组装 + CLI 入口
+│   └── PRD.md               # 产品需求文档
 ├── smalltoolscripts/        # 小工具脚本
 ├── test/                    # 测试与示例脚本
 └── docs/                    # 文档
