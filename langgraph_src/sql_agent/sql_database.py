@@ -1,7 +1,12 @@
 from langchain_community.utilities import SQLDatabase
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # db = SQLDatabase.from_uri("sqlite:////Users/zhaojie/Downloads/package/Chinook.db")
-db = SQLDatabase.from_uri("mysql://root:RoAIPoCIIq_74@127.0.0.1:3306/CNAIPOCIIQA01")
+db = SQLDatabase.from_uri(os.getenv("DB_URI"))
 
 
 if __name__ == "__main__":
