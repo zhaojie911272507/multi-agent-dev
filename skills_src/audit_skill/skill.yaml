@@ -1,0 +1,35 @@
+# Financial Audit Skill — Intent Definition
+# Tells the system when to invoke this audit tool
+
+name: financial-audit
+version: "1.0.0"
+description: Three-way reconciliation (invoice, statement, contract) with immutability and traceability
+
+triggers:
+  - keywords:
+      - 发票
+      - 对账单
+      - 合同
+      - invoice
+      - statement
+      - contract
+      - 三单合一
+      - 财务审计
+  - file_types:
+      - .pdf
+      - .json
+      - .xlsx
+  - intent_patterns:
+      - "reconcile invoice with contract"
+      - "validate tax compliance"
+      - "payment verification"
+
+constraints:
+  max_single_amount_auto_approval: 100000
+  critical_mismatch_threshold: "0.01"
+  min_confidence_for_auto_pass: 85
+
+output_modes:
+  - PASS
+  - CRITICAL_MISMATCH
+  - PENDING_HUMAN_REVIEW

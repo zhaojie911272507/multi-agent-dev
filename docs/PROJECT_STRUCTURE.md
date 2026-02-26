@@ -37,6 +37,8 @@ langgraphtest0725/
 │   ├── utils.py             # 工具函数
 │   ├── main.py              # 工作流组装 + CLI 入口
 │   └── PRD.md               # 产品需求文档
+├── skills_src/              # AI 能力单元
+│   └── audit_skill/         # 财务数据自动审计 Skill（三单合一、断路器、可追溯）
 ├── smalltoolscripts/        # 小工具脚本
 ├── test/                    # 测试与示例脚本
 └── docs/                    # 文档

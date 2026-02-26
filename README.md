@@ -99,6 +99,7 @@ python mcp_src/example/agent_client.py
 | `mcp_src/` | MCP 协议示例与自定义服务器（含 Database MCP Server） |
 | `langfuse_src/` | Langfuse 可观测性集成 |
 | `evomap_src/` | EvoMap 知识演化图谱系统 |
+| `skills_src/` | AI 能力单元（含财务审计 Skill：三单合一、断路器、可追溯） |
 | `persistence/` | 持久化与内存存储 |
 | `knowledge/` | 设计模式、异步等知识库 |
 | `docs/` | 项目文档 |
