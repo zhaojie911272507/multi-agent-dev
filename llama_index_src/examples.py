@@ -57,3 +57,13 @@ def run_rag(llm: OpenAILike) -> None:
     query_engine = index.as_query_engine()
     response = query_engine.query("LlamaIndex 的核心概念有哪些？")
     print(response.response)
+
+
+if __name__ == "__main__":
+    from config import get_llm
+
+    llm = get_llm()
+    run_completion(llm)
+    run_chat(llm)
+    run_streaming(llm)
+    run_rag(llm)
