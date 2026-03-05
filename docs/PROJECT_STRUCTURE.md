@@ -24,7 +24,7 @@ langgraphtest0725/
 ├── persistence/             # 持久化与内存存储
 ├── knowledge/               # 设计模式、异步等知识库
 ├── streamlit_src/           # Streamlit 演示（原 streamlit-src）
-├── llama_index/             # LlamaIndex 示例（原 LlamaIndex）
+├── llama_index_src/         # LlamaIndex 示例（百炼 Qwen，OpenAI 兼容）
 ├── evomap_src/              # EvoMap 知识演化图谱系统
 │   ├── nodes/               # 工作流节点
 │   │   ├── knowledge_collector.py   # 知识采集
@@ -58,7 +58,7 @@ langgraphtest0725/
 | `ReporterAgent` | `reporter_agent` | PEP 8：包名 snake_case |
 | `add-a-human-in-the-loop-for-tools` | `add_human_in_the_loop_for_tools` | PEP 8：包名禁用连字符 |
 | `streamlit-src` | `streamlit_src` | PEP 8：包名禁用连字符 |
-| `LlamaIndex` | `llama_index` | PEP 8：包名 snake_case |
+| `llama_index` | `llama_index_src` | 避免与 pip 包名冲突 |
 | `CrewAI-LangGraph` | `crewai_langgraph` | PEP 8：包名 snake_case + 禁用连字符 |
 | `createDeletgationTasks` | `create_delegation_tasks` | PEP 8 + 拼写修正 |
 | `createWorkerAgent` | `create_worker_agent` | PEP 8 |

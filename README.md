@@ -120,7 +120,7 @@ python crewai_src/crewsrc/crewaidemo/src/crewaidemo/main.py
 | `evomap_src/` | EvoMap 知识演化图谱系统（采集 → 分析 → 图谱 → 预测 → 报告） |
 | `graph_builder_api/` | 图可视化工具 |
 | `streamlit_src/` | Streamlit 演示（嵌入模型对比等） |
-| `llama_index/` | LlamaIndex 示例 |
+| `llama_index_src/` | LlamaIndex 示例（百炼 Qwen） |
 | `skills_src/` | AI 能力单元（含财务审计 Skill：三单合一、断路器、可追溯） |
 | `example/` | 统一启动脚本（README 运行示例入口） |
 | `persistence/` | 持久化与内存存储 |
