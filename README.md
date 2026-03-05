@@ -55,6 +55,7 @@ python example/run_reporter_agent.py           # Reporter Agent
 python example/run_evomap.py                   # EvoMap 知识演化图谱
 python example/run_mcp_agent.py                # MCP Agent（需先启动 MCP 服务器）
 python example/run_crewai.py                   # CrewAI 示例
+python -m persistence_src.tool_orchestrator.example_run  # Tool Orchestrator（MCP + Skills 编排）
 ```
 
 ```bash
@@ -94,6 +95,12 @@ python crewai_src/crewsrc/crewaidemo/src/crewaidemo/main.py
 - **上下文共享** - 实现跨智能体信息传递
 - **自主协作** - 智能体自动协商与决策
 
+### 工具编排与持久化：Tool Orchestrator（persistence_src）
+
+- **精准工具调用** - LangGraph 编排 Skills 与 MCP 工具，支持多轮 tool call
+- **状态记忆** - Checkpointer 按 thread_id 持久化对话，支持语义记忆（Store）
+- **统一注册** - 财务审计 Skill、MCP 工具统一暴露为 LangChain tools
+
 ### 状态驱动工作流：LangGraph
 
 - **可视化编排** - 构建复杂任务状态机
@@ -123,7 +130,7 @@ python crewai_src/crewsrc/crewaidemo/src/crewaidemo/main.py
 | `llama_index_src/` | LlamaIndex 示例（百炼 Qwen） |
 | `skills_src/` | AI 能力单元（含财务审计 Skill：三单合一、断路器、可追溯） |
 | `example/` | 统一启动脚本（README 运行示例入口） |
-| `persistence/` | 持久化与内存存储 |
+| `persistence_src/` | 持久化与内存存储（SQLite 对话、Tool Orchestrator 工具编排） |
 | `knowledge/` | 设计模式、异步、傅里叶等知识库 |
 | `docs/` | 项目文档 |
 

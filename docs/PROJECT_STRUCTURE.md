@@ -21,7 +21,7 @@ langgraphtest0725/
 ├── crewai_src/              # CrewAI 多智能体示例
 ├── mcp_src/                 # MCP（Model Context Protocol）示例
 ├── langfuse_src/            # Langfuse 可观测性
-├── persistence/             # 持久化与内存存储
+├── persistence_src/         # 持久化与内存存储（SQLite、memory_store、tool_orchestrator）
 ├── knowledge/               # 设计模式、异步等知识库
 ├── streamlit_src/           # Streamlit 演示（原 streamlit-src）
 ├── llama_index_src/         # LlamaIndex 示例（百炼 Qwen，OpenAI 兼容）

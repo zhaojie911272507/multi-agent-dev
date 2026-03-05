@@ -52,21 +52,26 @@
 ## 使用示例
 
 ```python
+import asyncio
 from persistence_src.tool_orchestrator import create_orchestrator
 
-# 创建编排器：自动注册 skills + MCP 工具
-orchestrator = create_orchestrator(
-    mcp_servers={"math": {"command": "python", "args": ["path/to/math_server.py"], "transport": "stdio"}},
-    enable_audit_skill=True,
-)
+async def main():
+    # 创建编排器：自动注册 skills + MCP 工具（create_orchestrator 为 async）
+    orchestrator = await create_orchestrator(
+        mcp_servers={"math": {"command": "python", "args": ["path/to/math_server.py"], "transport": "stdio"}},
+        enable_audit_skill=True,
+    )
+    # 多轮对话（同一 thread_id 保持状态）
+    config = {"configurable": {"thread_id": "user-123"}, "recursion_limit": 15}
+    response = await orchestrator.ainvoke(
+        {"messages": [{"role": "user", "content": "帮我做一次发票校验"}]},
+        config,
+    )
 
-# 多轮对话（同一 thread_id 保持状态）
-config = {"configurable": {"thread_id": "user-123"}}
-response = await orchestrator.ainvoke(
-    {"messages": [{"role": "user", "content": "帮我做一次发票校验"}]},
-    config,
-)
+asyncio.run(main())
 ```
+
+或直接运行示例：`python -m persistence_src.tool_orchestrator.example_run`
 
 ---
 
@@ -79,3 +84,4 @@ response = await orchestrator.ainvoke(
 | `agent_graph.py` | 构建 LangGraph StateGraph，集成 ToolNode、Checkpointer、可选 Store |
 | `memory_integration.py` | 将 InMemoryStore 检索结果注入 agent context |
 | `__init__.py` | 导出 `create_orchestrator` 等公共接口 |
+| `example_run.py` | 可运行示例（`python -m persistence_src.tool_orchestrator.example_run`） |
