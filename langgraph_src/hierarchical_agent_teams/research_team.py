@@ -1,5 +1,12 @@
 import os
+import sys
+from pathlib import Path
 from typing import Literal
+
+# Ensure project root is in path before langgraph_src imports
+_root = Path(__file__).resolve().parent.parent.parent
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
 
 from langchain.chat_models import init_chat_model
 from langchain_core.messages import HumanMessage
@@ -9,13 +16,7 @@ from langgraph.prebuilt import create_react_agent
 from langgraph.types import Command
 
 from create_tools_for_research_team import tavily_tool, scrape_webpages
-import sys
-from pathlib import Path
 from langgraph_src.hierarchical_agent_teams.helper_utilities import State, make_supervisor_node
-
-
-root_dir = Path(__file__).parent.parent
-sys.path.append(str(root_dir))
 
 # llm = ChatOpenAI(model="deepseek-chat", temperature=0)
 llm = init_chat_model("deepseek-chat")
