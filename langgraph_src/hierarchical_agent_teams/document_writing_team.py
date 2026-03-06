@@ -6,7 +6,7 @@ from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
 from langgraph.constants import START
 from langgraph.graph import StateGraph
-from langgraph.prebuilt import create_react_agent
+from langchain.agents import create_agent
 from langgraph.types import Command
 
 from langgraph_src.hierarchical_agent_teams.helper_utilities import State, make_supervisor_node
@@ -20,10 +20,10 @@ llm = init_chat_model("deepseek-chat")
 # llm = ChatOpenAI(model="deepseek-chat", openai_api_base="https://api.deepseek.com/v1/", openai_api_key=os.getenv("DEEPSEEK_API_KEY"))
 # 使用ChatOpenAI 方法无法正确执行
 
-doc_writer_agent = create_react_agent(
+doc_writer_agent = create_agent(
     llm,
     tools=[write_document, edit_document, read_document],
-    prompt=(
+    system_prompt=(
         "You can read, write and edit documents based on note-taker's outlines. "
         "Don't ask follow-up questions."
     ),
@@ -43,10 +43,10 @@ def doc_writing_node(state: State) -> Command[Literal["supervisor"]]:
     )
 
 
-note_taking_agent = create_react_agent(
+note_taking_agent = create_agent(
     llm,
     tools=[create_outline, read_document],
-    prompt=(
+    system_prompt=(
         "You can read documents and create outlines for the document writer. "
         "Don't ask follow-up questions."
     ),
@@ -66,7 +66,7 @@ def note_taking_node(state: State) -> Command[Literal["supervisor"]]:
     )
 
 
-chart_generating_agent = create_react_agent(
+chart_generating_agent = create_agent(
     llm, tools=[read_document, python_repl_tool]
 )
 
@@ -102,9 +102,13 @@ paper_writing_builder.add_edge(START, "supervisor")
 paper_writing_graph = paper_writing_builder.compile()
 
 if __name__ == "__main__":
-    from langfuse.langchain import CallbackHandler
+    try:
+        from langfuse.langchain import CallbackHandler
+        langfuse_handler = CallbackHandler()
+        callbacks = [langfuse_handler]
+    except (ModuleNotFoundError, ImportError):
+        callbacks = []
 
-    langfuse_handler = CallbackHandler()
     for s in paper_writing_graph.stream(
         {
             "messages": [
@@ -114,7 +118,7 @@ if __name__ == "__main__":
                 )
             ]
         },
-        {"recursion_limit": 100,"callbacks": [langfuse_handler]},
+        {"recursion_limit": 100, "callbacks": callbacks},
     ):
         print(s)
         print("---")
