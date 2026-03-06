@@ -9,7 +9,7 @@ from __future__ import annotations
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from evomap_src.models import AnalysisResult, EvoMapState
-from evomap_src.utils import get_llm
+from evomap_src.utils import get_llm, structured_invoke
 
 SYSTEM_PROMPT = """\
 你是知识分析专家。根据提供的知识片段，提取出核心的知识实体和它们之间的关系。
@@ -41,14 +41,13 @@ def knowledge_analyzer(state: EvoMapState) -> dict:
     )
 
     llm = get_llm()
-    llm_with_structure = llm.with_structured_output(AnalysisResult)
-
-    result: AnalysisResult = llm_with_structure.invoke([
+    messages = [
         SystemMessage(content=SYSTEM_PROMPT),
         HumanMessage(
             content=f"研究主题：{query}\n\n知识片段：\n{fragment_text}"
         ),
-    ])
+    ]
+    result: AnalysisResult = structured_invoke(llm, AnalysisResult, messages)
 
     return {
         "entities": result.entities,

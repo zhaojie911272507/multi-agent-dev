@@ -10,7 +10,7 @@ import json
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from evomap_src.models import EvoMapState, TrendResult
-from evomap_src.utils import get_llm
+from evomap_src.utils import get_llm, structured_invoke
 
 SYSTEM_PROMPT = """\
 你是技术趋势分析专家。根据提供的知识演化图谱，分析每个实体的发展趋势。
@@ -48,12 +48,11 @@ def trend_predictor(state: EvoMapState) -> dict:
         graph_summary = json.dumps(compact, ensure_ascii=False, indent=2)
 
     llm = get_llm()
-    llm_with_structure = llm.with_structured_output(TrendResult)
-
-    result: TrendResult = llm_with_structure.invoke([
+    messages = [
         SystemMessage(content=SYSTEM_PROMPT),
         HumanMessage(content=f"演化图谱数据：\n{graph_summary}"),
-    ])
+    ]
+    result: TrendResult = structured_invoke(llm, TrendResult, messages)
 
     return {
         "trend_predictions": result.predictions,
