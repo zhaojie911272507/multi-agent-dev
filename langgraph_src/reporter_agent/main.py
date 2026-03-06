@@ -55,6 +55,7 @@ only ask for the relevant columns given the question.
 
 DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the database.
 '''.format(
+    dialect="SQL",
     top_k=5,
 )
 
@@ -89,7 +90,7 @@ If there are any of the above mistakes, rewrite the query. If there are no mista
 just reproduce the original query.
 
 You will call the appropriate tool to execute the query after running this check.
-'''
+'''.format(dialect="SQL")
 
 def check_query(state: MessagesState):
     system_message = {
@@ -108,6 +109,20 @@ def check_query(state: MessagesState):
 
     return {"messages": [response]}
 
+report_system_prompt = (
+    "You are a helpful report generation assistant. "
+    "Generate clear, informative reports based on user requests. "
+    "Use the requested language (e.g., Chinese) when asked."
+)
+
+
+def report(state: MessagesState):
+    """Report generation node for the reporter agent."""
+    system_message = {"role": "system", "content": report_system_prompt}
+    response = llm.invoke([system_message] + state["messages"])
+    return {"messages": [response]}
+
+
 def should_continue(state: MessagesState) -> Literal[END, "check_query"]:
     messages = state["messages"]
     last_message = messages[-1]
@@ -119,13 +134,16 @@ def should_continue(state: MessagesState) -> Literal[END, "check_query"]:
 
 if __name__ == "__main__":
     builder = StateGraph(MessagesState)
-    builder.add_node(list_tables)
+    builder.add_node(report)
+    # builder.add_node(list_tables)
     # builder.add_node(call_get_schema)
     # builder.add_node(get_schema_node,"get_schema")
     # builder.add_node(generate_query)
     # builder.add_node(check_query)
     # builder.add_node(run_query_node,"run_query")
 
+    builder.add_edge(START, "report")
+    builder.add_edge("report", END)
     # builder.add_edge(START,"list_tables")
     # builder.add_edge("list_tables","call_get_schema")
     # builder.add_edge("call_get_schema","get_schema")
@@ -173,18 +191,18 @@ if __name__ == "__main__":
 
     load_dotenv()
 
-    # Get keys for your project from the project settings page: https://cloud.langfuse.com
-    os.environ["LANGFUSE_PUBLIC_KEY"] = os.getenv("LANGFUSE_PUBLIC_KEY")
-    os.environ["LANGFUSE_SECRET_KEY"] = os.getenv("LANGFUSE_SECRET_KEY")
-    os.environ["LANGFUSE_HOST"] = os.getenv("LANGFUSE_HOST")
-
-    from langfuse.langchain import CallbackHandler
-
-    # Initialize Langfuse CallbackHandler for Langchain (tracing)
-    langfuse_handler = CallbackHandler()
+    callbacks = []
+    try:
+        os.environ["LANGFUSE_PUBLIC_KEY"] = os.getenv("LANGFUSE_PUBLIC_KEY", "")
+        os.environ["LANGFUSE_SECRET_KEY"] = os.getenv("LANGFUSE_SECRET_KEY", "")
+        os.environ["LANGFUSE_HOST"] = os.getenv("LANGFUSE_HOST", "")
+        from langfuse.langchain import CallbackHandler
+        callbacks = [CallbackHandler()]
+    except (ImportError, ModuleNotFoundError) as e:
+        pass  # Run without Langfuse tracing
 
     for s in agent.stream(
             {"messages": [HumanMessage(content=question)]},
-            config={"callbacks": [langfuse_handler]}):
+            config={"callbacks": callbacks}):
         print(s)
         # s["messages"][-1].pretty_print()

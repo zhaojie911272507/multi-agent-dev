@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def main():
     subprocess.run(
-        [sys.executable, str(ROOT / "langgraph_src" / "reporter_agent" / "main.py")],
+        [sys.executable, "-m", "langgraph_src.reporter_agent.main"],
         cwd=ROOT,
     )
 
