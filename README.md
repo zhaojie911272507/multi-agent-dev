@@ -55,6 +55,7 @@ python example/run_reporter_agent.py           # Reporter Agent
 python example/run_evomap.py                   # EvoMap 知识演化图谱
 python example/run_mcp_agent.py                # MCP Agent（需先启动 MCP 服务器）
 python example/run_crewai.py                   # CrewAI 示例
+python example/run_harness_demo.py             # Harness 评测示例
 python -m persistence_src.tool_orchestrator.example_run  # Tool Orchestrator（MCP + Skills 编排）
 ```
 
@@ -125,6 +126,7 @@ python crewai_src/crewsrc/crewaidemo/src/crewaidemo/main.py
 | `mcp_src/` | MCP 协议示例与自定义服务器（含 Database MCP Server） |
 | `langfuse_src/` | Langfuse 可观测性集成 |
 | `evomap_src/` | EvoMap 知识演化图谱系统（采集 → 分析 → 图谱 → 预测 → 报告） |
+| `harness_src/` | Harness 评测实践（最小可运行评测、规则评分、结果汇总） |
 | `graph_builder_api/` | 图可视化工具 |
 | `streamlit_src/` | Streamlit 演示（嵌入模型对比等） |
 | `llama_index_src/` | LlamaIndex 示例（百炼 Qwen） |

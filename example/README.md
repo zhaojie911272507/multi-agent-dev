@@ -27,6 +27,9 @@ python example/run_mcp_agent.py
 # CrewAI 示例
 python example/run_crewai.py
 
+# Harness 评测示例
+python example/run_harness_demo.py
+
 # LlamaIndex 示例（百炼 Qwen，需 DASHSCOPE_API_KEY）
 python example/run_llama_index_demo.py
 

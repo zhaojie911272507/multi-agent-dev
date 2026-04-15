@@ -1,7 +1,6 @@
-import os
-from dotenv import load_dotenv
+"""Prebuilt LangGraph agent examples."""
 
-load_dotenv()
-os.environ["DEEPSEEK_API_KEY"] = os.getenv("DEEPSEEK_API_KEY")
+from .weather_agent import build_weather_agent
 
-MODEL_NAME= "deepseek-chat"
+__all__ = ["build_weather_agent"]
+
