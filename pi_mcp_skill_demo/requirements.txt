@@ -1,0 +1,13 @@
+# Pi 动态组装 MCP + Skill 示例的依赖
+#
+# 说明：
+# - pi-py-agent-core 是 Pi 官方（@earendil-works/pi-agent-core）的 Python 移植版，
+#   它自动依赖 pi-ai（统一多厂商 LLM 流式 API，内置 openai-completions provider）
+# - mcp 是 MCP 协议官方 SDK（ClientSession / FastMCP / stdio）
+# - python-dotenv 用于加载仓库根目录 .env（可选，没有也能跑）
+# - pyyaml 用于读取 config/mcp_servers.yaml（pi-py-agent-core 已间接依赖，显式声明更稳妥）
+
+pi-py-agent-core>=0.84
+mcp>=1.24,<2.0
+python-dotenv>=1.0
+pyyaml>=6.0

@@ -1,0 +1,29 @@
+# MCP 服务配置 —— 动态组装的数据源
+#
+# “动态组装”的第一步：把要连接的 MCP 服务以配置的方式描述出来，
+# 代码运行时再逐条读取、创建客户端、建立连接。
+# 新增/停用一个服务只需改这里，无需改代码。
+#
+# 字段说明：
+#   name         客户端名称（会拼进工具名：mcp__{name}__{tool}，只允许字母数字_-）
+#   command      启动服务的命令
+#   args         命令行参数；{DEMO_ROOT} 会被替换为本示例所在目录的绝对路径
+#   env          传递给服务子进程的环境变量（可选）
+#   enable_tools 只启用其中列出的工具（None 表示全部启用）
+#   disable_tools 禁用其中列出的工具（与 enable_tools 二选一使用）
+
+mcp_servers:
+  # 计算器服务：4 个工具全部启用
+  - name: math
+    command: python
+    args:
+      - "{DEMO_ROOT}/servers/math_server.py"
+    enable_tools: null
+
+  # 天气服务：只启用 query_weather，动态过滤掉 get_weather_forecast
+  - name: weather
+    command: python
+    args:
+      - "{DEMO_ROOT}/servers/weather_server.py"
+    enable_tools:
+      - query_weather

@@ -1,0 +1,14 @@
+# AgentScope 动态组装 MCP + Skill 示例依赖
+#
+# 注意版本约束：
+# - agentscope 2.0.6 需要 mcp >= 1.24（依赖 streamable_http_client 新 API 名）
+# - 若环境里 mcp 版本过低会 ImportError，请升级到 1.24+
+# - mcp 必须 < 2.0.0（agentscope 2.0.6 的上限约束）
+agentscope>=2.0.6,<3.0
+mcp>=1.24,<2.0
+
+# 配置解析（读 config/mcp_servers.yaml）
+PyYAML>=6.0
+
+# 读取仓库根目录 .env 中的 DEEPSEEK_API_KEY
+python-dotenv>=1.0
