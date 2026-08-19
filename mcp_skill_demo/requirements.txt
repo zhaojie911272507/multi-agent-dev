@@ -1,0 +1,9 @@
+# 依赖清单（示例独立需要的最小集合）
+# 仓库根目录的 requirements.txt 已包含全部依赖，本文件供单独使用本示例时参考
+langgraph>=1.0.0
+langchain>=1.0.0
+langchain-mcp-adapters>=0.2.0
+langchain-deepseek>=1.0.0
+mcp>=1.0.0
+PyYAML>=6.0.0
+python-dotenv>=1.0.0

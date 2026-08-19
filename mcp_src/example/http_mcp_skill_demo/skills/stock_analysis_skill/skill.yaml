@@ -1,0 +1,24 @@
+# Skill 声明文件（与 skills_src/audit_skill/skill.yaml 同一模式）
+# LangGraph 主示例通过读取本文件，把 skill 的「名字/描述/触发词」暴露给 LLM，
+# 让 LLM 自主决定何时调用该 skill（即把 skill 包装成一个可被 agent 选择的工具）。
+
+name: stock-analysis
+version: "1.0.0"
+
+# 描述会被写入工具的 description，LLM 靠它决定是否调用本 skill —— 务必写清楚用途
+description: 基于市盈率(PE)的股票估值分析：输入股票代码，输出估值判断（低估/合理/高估）
+
+# skill 实现入口：orchestrator 模块中的函数（由 langgraph_agent.py 动态加载）
+entry: orchestrator.run_analysis
+
+# 触发词：出现在用户输入中时，agent 更可能选择该 skill
+triggers:
+  keywords:
+    - 股票
+    - 股价
+    - PE
+    - 市盈率
+    - 估值
+    - stock
+    - share price
+    - valuation
